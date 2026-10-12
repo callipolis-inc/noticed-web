@@ -174,59 +174,6 @@ export function FaqSection() {
         </div>
       </motion.div>
 
-      {/* 3. AS FEATURED IN MARQUEE SECTION (EXACT STYLE OF USER REFERENCE) */}
-      <div className="w-full mt-20 sm:mt-28 pt-8 border-t border-white/10 flex flex-col items-center">
-        {/* Top Header Labels */}
-        <div className="w-full max-w-5xl flex items-center justify-between px-4 mb-6 sm:mb-8 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-white/40">
-          <span>AS FEATURED IN — ARCHIVAL EDITIONS</span>
-          <span>SELECTED PUBLICATIONS</span>
-        </div>
-
-        {/* Endless Scrolling Marquee */}
-        <div 
-          className="w-full overflow-hidden select-none py-6 border-y border-white/10 relative"
-          style={{
-            maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-          }}
-        >
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              duration: 28,
-              ease: "linear",
-              repeat: Infinity,
-            }}
-            className="flex items-center gap-10 sm:gap-16 md:gap-20 whitespace-nowrap will-change-transform w-max"
-          >
-            {[
-              "Kinfolk",
-              "The Paris Review",
-              "Apartamento",
-              "Cereal",
-              "Monocle",
-              "Architectural Digest",
-              "Noticed",
-              "Kinfolk",
-              "The Paris Review",
-              "Apartamento",
-              "Cereal",
-              "Monocle",
-              "Architectural Digest",
-              "Noticed",
-            ].map((pub, idx) => (
-              <div key={idx} className="flex items-center gap-10 sm:gap-16 md:gap-20">
-                <span className="font-[family-name:var(--font-cormorant)] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] text-white font-light tracking-wide transition-colors">
-                  {pub}
-                </span>
-                <span className="text-amber-200/50 text-base sm:text-lg font-serif select-none">
-                  ✳
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
 
 
       {/* Waitlist Modal */}

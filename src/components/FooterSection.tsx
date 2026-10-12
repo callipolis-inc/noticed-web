@@ -12,7 +12,7 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="relative w-full bg-[#050708] min-h-[70vh] sm:min-h-[85vh] py-32 sm:py-44 lg:py-56 overflow-hidden select-none flex items-center justify-center">
+    <footer className="relative w-full bg-[#050708] min-h-[35vh] sm:min-h-[45vh] py-16 sm:py-20 lg:py-24 overflow-hidden select-none flex items-center justify-center">
       {/* 1. SEAMLESS TOP AMBIENT FADE (GUARANTEES 100% PURE OBSIDIAN AT JUNCTION WITH FAQ) */}
       <div 
         className="absolute inset-0 pointer-events-none"
