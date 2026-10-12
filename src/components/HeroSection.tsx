@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, X, ArrowUpRight } from "lucide-react";
 import { WaitlistModal } from "./WaitlistModal";
 
 export function HeroSection() {
@@ -65,9 +65,19 @@ export function HeroSection() {
             <span>Waitlist</span>
           </button>
 
-          <span className="tracking-[0.22em] text-[11px] sm:text-xs text-white/60 hover:text-white transition-colors uppercase cursor-pointer hidden md:inline-block font-[family-name:var(--font-cormorant)]">
-            Philosophy
-          </span>
+          <a
+            href="#manuscript"
+            className="tracking-[0.22em] text-[11px] sm:text-xs text-white/60 hover:text-white transition-colors uppercase cursor-pointer hidden md:inline-block font-[family-name:var(--font-cormorant)]"
+          >
+            Manuscript
+          </a>
+
+          <a
+            href="#library"
+            className="tracking-[0.22em] text-[11px] sm:text-xs text-white/60 hover:text-white transition-colors uppercase cursor-pointer hidden md:inline-block font-[family-name:var(--font-cormorant)]"
+          >
+            Library
+          </a>
 
           {/* Minimalist 2-line Menu Button */}
           <button
@@ -154,46 +164,105 @@ export function HeroSection() {
       </motion.div>
 
 
-      {/* Dropdown Menu Modal */}
-      {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute top-20 right-6 sm:right-16 z-40 w-64 rounded-2xl border border-white/20 bg-[#0e1317]/95 backdrop-blur-2xl p-5 text-white shadow-2xl"
-        >
-          <div className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-3 font-mono">
-            Directory
-          </div>
-          <ul className="space-y-3 text-xs tracking-wider uppercase font-[family-name:var(--font-cormorant)]">
-            <li>
-              <a href="#hero" onClick={() => setMenuOpen(false)} className="block py-1 hover:text-amber-200 transition-colors">
-                01. The Exhibition
-              </a>
-            </li>
-            <li>
-              <a href="#darkroom" onClick={() => setMenuOpen(false)} className="block py-1 text-white/70 hover:text-amber-200 transition-colors">
-                02. Analog Darkroom
-              </a>
-            </li>
-            <li>
-              <a href="#folio" onClick={() => setMenuOpen(false)} className="block py-1 text-white/70 hover:text-amber-200 transition-colors">
-                03. Luxury Folio
-              </a>
-            </li>
-            <li>
-              <a href="#manifesto" onClick={() => setMenuOpen(false)} className="block py-1 text-white/70 hover:text-amber-200 transition-colors">
-                04. Literary Manifesto
-              </a>
-            </li>
-          </ul>
-          <div className="mt-5 pt-4 border-t border-white/10 flex justify-between items-center text-[11px] text-white/50 font-sans">
-            <span>Noticed v1.0</span>
-            <button onClick={() => { setMenuOpen(false); handleOpenStore("apple"); }} className="text-white hover:underline">
-              Waitlist &rarr;
-            </button>
-          </div>
-        </motion.div>
-      )}
+      {/* FULLSCREEN CURATORIAL CURTAIN OVERLAY (NO RIGID BOX) */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-50 bg-[#050708]/96 backdrop-blur-3xl flex flex-col justify-between p-6 sm:p-12 md:p-16 lg:p-20 text-white select-none overflow-y-auto"
+          >
+            {/* Top Bar inside Overlay */}
+            <div className="w-full flex items-center justify-between pb-6 border-b border-white/10">
+              <div className="flex items-center gap-4">
+                <span className="font-[family-name:var(--font-cormorant)] text-base sm:text-lg tracking-[0.25em] uppercase text-white">
+                  NOTICED
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                  &bull; DIRECTORY &bull; VOL. I
+                </span>
+              </div>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] text-white/60 hover:text-white transition-colors cursor-pointer group"
+                aria-label="Close Navigation Menu"
+              >
+                <span>Close</span>
+                <span className="p-1 rounded-full border border-white/20 group-hover:border-white transition-colors">
+                  <X size={14} />
+                </span>
+              </button>
+            </div>
+
+            {/* Middle: Editorial Quote + Grand Navigation List */}
+            <div className="w-full max-w-6xl my-auto py-10 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              {/* Left Column: Curatorial Philosophy */}
+              <div className="lg:col-span-5 space-y-5 hidden md:block">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 block">
+                  The Curatorial Index
+                </span>
+                <blockquote className="font-[family-name:var(--font-cormorant)] text-2xl sm:text-3xl font-light italic text-white/80 leading-relaxed">
+                  &ldquo;We build our sanctuary by what we choose to linger upon. Memory is not storage; it is architecture.&rdquo;
+                </blockquote>
+                <div className="pt-4 border-t border-white/10 flex items-center gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
+                  <span>MCMXXVI</span>
+                  <span>&bull;</span>
+                  <span>TOKYO &bull; PARIS</span>
+                </div>
+              </div>
+
+              {/* Right Column: Monumental Navigation Links */}
+              <div className="lg:col-span-7 flex flex-col space-y-4 sm:space-y-6">
+                {[
+                  { num: "01", label: "The Exhibition", href: "#hero", desc: "Baroque Sanctuary & Philosophy" },
+                  { num: "02", label: "The Living Manuscript", href: "#manuscript", desc: "Open Folio Edition & 3D Scroll Physics" },
+                  { num: "03", label: "Folio Architecture", href: "#library", desc: "Multi-Volume Bound Luxury Bookshelf" },
+                  { num: "04", label: "Archival Inquiries", href: "#faq", desc: "Offline Solitude & FAQ Specifications" },
+                ].map((item, idx) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.08 + idx * 0.06, duration: 0.35 }}
+                    className="group flex flex-col sm:flex-row sm:items-baseline justify-between py-2 sm:py-3 border-b border-white/10 hover:border-white/40 transition-colors"
+                  >
+                    <div className="flex items-baseline gap-4 sm:gap-6">
+                      <span className="font-mono text-xs sm:text-sm text-white/40 group-hover:text-amber-200/80 transition-colors">
+                        {item.num}
+                      </span>
+                      <span className="font-[family-name:var(--font-cormorant)] text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-wide group-hover:translate-x-2 transition-transform duration-300">
+                        {item.label}
+                      </span>
+                    </div>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 group-hover:text-white/70 transition-colors mt-1 sm:mt-0">
+                      {item.desc}
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Bar: Access CTA & Copyright */}
+            <div className="w-full pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/40">
+              <span>© 2026 NOTICED ARCHIVES &bull; ENCRYPTED LOCAL MEMORY</span>
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  handleOpenStore("apple");
+                }}
+                className="flex items-center gap-1.5 text-white hover:text-amber-200 transition-colors cursor-pointer"
+              >
+                <span>Request Early Admission Token</span>
+                <ArrowUpRight size={13} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* TestFlight & App Store Waitlist Invitation Modal */}
       <WaitlistModal
