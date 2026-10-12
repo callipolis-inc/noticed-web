@@ -1,14 +1,52 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function BookUnfoldSection() {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll-driven book opening and closing
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // 3D rotation angles for opening upon entering and closing upon leaving:
+  // 0.05 -> 0.30: Book unfolds open from 60deg to 0deg
+  // 0.30 -> 0.70: Book rests completely open (0deg) for reading
+  // 0.70 -> 0.95: Book gently folds closed back to 60deg as user scrolls to next section
+  const leftPageRotateY = useTransform(
+    scrollYProgress,
+    [0.08, 0.32, 0.68, 0.94],
+    [55, 0, 0, 55]
+  );
+
+  const rightPageRotateY = useTransform(
+    scrollYProgress,
+    [0.08, 0.32, 0.68, 0.94],
+    [-55, 0, 0, -55]
+  );
+
+  const bookScale = useTransform(
+    scrollYProgress,
+    [0.05, 0.30, 0.70, 0.95],
+    [0.94, 1, 1, 0.94]
+  );
+
+  const foldShadowOpacity = useTransform(
+    scrollYProgress,
+    [0.08, 0.30, 0.70, 0.94],
+    [0.45, 0, 0, 0.45]
+  );
 
   return (
-    <section className="relative w-full bg-[#050708] text-white py-24 sm:py-32 lg:py-40 px-4 sm:px-6 md:px-10 flex flex-col items-center justify-center overflow-hidden select-none">
+    <section 
+      ref={sectionRef}
+      className="relative w-full bg-[#050708] text-white py-24 sm:py-32 lg:py-44 px-4 sm:px-6 md:px-10 flex flex-col items-center justify-center overflow-hidden select-none"
+    >
       
       {/* 1. SLENDER CURATORIAL INTRO */}
       <motion.div
@@ -16,7 +54,7 @@ export function BookUnfoldSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.9 }}
-        className="max-w-2xl text-center mb-14 sm:mb-18 px-4"
+        className="max-w-2xl text-center mb-14 sm:mb-20 px-4"
       >
         <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-white/40 block mb-4">
           The Living Manuscript &bull; Open Folio Edition
@@ -26,43 +64,51 @@ export function BookUnfoldSection() {
         </blockquote>
       </motion.div>
 
-      {/* 2. THE TWO-PAGE OPEN BOOK (Without any outer card or glass casing) */}
+      {/* 2. THE 3D SCROLL-DRIVEN OPENING & CLOSING BOOK */}
       <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          scale: bookScale,
+          perspective: 1800,
+        }}
         className="relative w-full max-w-5xl flex justify-center"
       >
-        {/* THE TWO-PAGE OPEN SPREAD (Stands directly on the dark canvas) */}
+        {/* TWO-PAGE SPREAD CONTAINER */}
         <div 
-          className="relative w-full flex flex-col md:flex-row rounded-xl overflow-hidden border border-stone-800/40"
+          className="relative w-full flex flex-col md:flex-row rounded-xl shadow-[0_35px_90px_rgba(0,0,0,0.95),0_15px_35px_rgba(0,0,0,0.75)] border border-stone-800/40"
           style={{
-            boxShadow: "0 35px 90px rgba(0, 0, 0, 0.95), 0 15px 35px rgba(0, 0, 0, 0.75)",
+            transformStyle: "preserve-3d",
           }}
         >
           
           {/* ============================================================
-              LEFT PAGE: PREFACE • ON STILLNESS
+              LEFT PAGE: PREFACE • ON STILLNESS (Hinged at Right / Spine)
               ============================================================ */}
-          <div 
-            className="relative flex-1 p-7 sm:p-10 lg:p-12 flex flex-col justify-between"
+          <motion.div 
             style={{
-              /* Natural paper gradient curling toward the center gutter */
+              rotateY: leftPageRotateY,
+              transformOrigin: "right center",
+              transformStyle: "preserve-3d",
               background: "linear-gradient(to right, #fbf9f4 0%, #f7f4ec 84%, #ded8c9 97%, #b5ad9b 100%)",
               color: "#1c1917",
               boxShadow: "inset 4px 0 10px rgba(0,0,0,0.03)",
             }}
+            className="relative flex-1 p-7 sm:p-10 lg:p-12 flex flex-col justify-between rounded-t-xl md:rounded-tr-none md:rounded-l-xl z-10"
           >
+            {/* Dynamic Fold Shadow Overlay */}
+            <motion.div 
+              style={{ opacity: foldShadowOpacity }}
+              className="absolute inset-0 bg-black/40 pointer-events-none rounded-l-xl z-20"
+            />
+
             {/* Stacked Pages Thickness Shadow (Left Outer Edge) */}
             <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-r from-black/15 to-transparent pointer-events-none" />
 
             {/* Page Content */}
-            <div>
+            <div className="relative z-10">
               {/* Header Plate */}
               <div className="border-b border-[#ded7c8] pb-3 mb-6 sm:mb-8 flex justify-between items-baseline font-mono text-[10px] tracking-[0.2em] text-[#78716c] uppercase">
                 <span>PREFACE &bull; ON STILLNESS</span>
-                <span>NOTICED SALON // 04:11 AM</span>
+                <span>NOTICED ARCHIVE // 04:11 AM</span>
               </div>
 
               {/* Title */}
@@ -80,14 +126,14 @@ export function BookUnfoldSection() {
                 </span>
               </div>
 
-              {/* Handwritten/Reflective Paragraph */}
+              {/* Reflective Paragraph */}
               <p className="font-[family-name:var(--font-cormorant)] text-sm sm:text-base leading-[1.78] text-[#44403c] italic font-light">
                 We do not need to add more days to our life. We only need to stop wasting the stillness that is already here. Memory is not storage. It is architecture. We build it by what we choose to linger on.
               </p>
             </div>
 
             {/* Footnote Apparatus & Page Number */}
-            <div className="pt-6 border-t border-[#ded7c8] mt-6 flex justify-between items-end">
+            <div className="relative z-10 pt-6 border-t border-[#ded7c8] mt-6 flex justify-between items-end">
               <div className="text-xs font-serif text-[#78716c] italic leading-relaxed max-w-[85%]">
                 <span className="font-mono not-italic font-bold text-[#9a3412] mr-1.5">1.</span>
                 Seneca, <span className="not-italic font-semibold">Letters from a Stoic</span> &mdash; underlined on a train to Kyoto, 04:11 AM.
@@ -96,16 +142,14 @@ export function BookUnfoldSection() {
                 pg. 12
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* ============================================================
-              THE CENTER SPINNER GUTTER & WOVEN SILK BOOKMARK RIBBON
+              CENTER SPINNER GUTTER & WOVEN SILK BOOKMARK RIBBON
               ============================================================ */}
           {/* Center Gutter Seam & Shadow Valley */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 pointer-events-none z-20">
-            {/* Deep Shadow Gutter Valley */}
             <div className="w-full h-full bg-gradient-to-r from-black/25 via-black/45 to-black/25" />
-            {/* Hairline Center Stitch Thread */}
             <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-black/40" />
           </div>
 
@@ -120,22 +164,30 @@ export function BookUnfoldSection() {
           />
 
           {/* ============================================================
-              RIGHT PAGE: FIELD RECORD • ON SEEING
+              RIGHT PAGE: FIELD RECORD • ON SEEING (Hinged at Left / Spine)
               ============================================================ */}
-          <div 
-            className="relative flex-1 p-7 sm:p-10 lg:p-12 flex flex-col justify-between"
+          <motion.div 
             style={{
-              /* Natural paper gradient curling away from the center gutter */
+              rotateY: rightPageRotateY,
+              transformOrigin: "left center",
+              transformStyle: "preserve-3d",
               background: "linear-gradient(to left, #fbf9f4 0%, #f7f4ec 84%, #ded8c9 97%, #b5ad9b 100%)",
               color: "#1c1917",
               boxShadow: "inset -4px 0 10px rgba(0,0,0,0.03)",
             }}
+            className="relative flex-1 p-7 sm:p-10 lg:p-12 flex flex-col justify-between rounded-b-xl md:rounded-bl-none md:rounded-r-xl z-10"
           >
+            {/* Dynamic Fold Shadow Overlay */}
+            <motion.div 
+              style={{ opacity: foldShadowOpacity }}
+              className="absolute inset-0 bg-black/40 pointer-events-none rounded-r-xl z-20"
+            />
+
             {/* Stacked Pages Thickness Shadow (Right Outer Edge) */}
             <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[4px] bg-gradient-to-l from-black/15 to-transparent pointer-events-none" />
 
             {/* Page Content */}
-            <div>
+            <div className="relative z-10">
               {/* Header Plate */}
               <div className="border-b border-[#ded7c8] pb-3 mb-4 sm:mb-5 flex justify-between items-baseline font-mono text-[10px] tracking-[0.2em] text-[#78716c] uppercase">
                 <span>FIELD RECORD &bull; ON SEEING</span>
@@ -199,11 +251,11 @@ export function BookUnfoldSection() {
             </div>
 
             {/* Footer & Page Number */}
-            <div className="pt-6 border-t border-[#ded7c8] mt-6 flex justify-between items-center text-[10px] font-mono text-[#a8a29e] tracking-widest uppercase">
+            <div className="relative z-10 pt-6 border-t border-[#ded7c8] mt-6 flex justify-between items-center text-[10px] font-mono text-[#a8a29e] tracking-widest uppercase">
               <span>NOTICED FOLIO ARCHIVE</span>
               <span>pg. 13</span>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

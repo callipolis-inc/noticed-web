@@ -137,7 +137,7 @@ export function WaitlistModal({
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="author@noticedsalon.com"
+                      placeholder="author@noticedapp.com"
                       className="w-full rounded-xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white placeholder-white/30 focus:border-white/40 focus:outline-none transition-all"
                     />
                   </div>
