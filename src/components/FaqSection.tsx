@@ -47,7 +47,7 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="relative w-full bg-[#050708] text-white py-24 sm:py-36 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
+    <section id="faq" className="relative w-full bg-[#050708] text-white py-16 sm:py-24 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
       
       {/* 1. TWO-COLUMN FAQ CONTAINER */}
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -118,30 +118,30 @@ export function FaqSection() {
 
       </div>
 
-      {/* 2. SLENDER RESERVATION BANNER */}
+      {/* 2. MINIMALIST RESERVATION BAND (NO CARD, HAIRLINE LINE DIVIDER, LEAN MARGINS) */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.9 }}
-        className="w-full max-w-3xl mt-24 sm:mt-32 text-center p-8 sm:p-12 border border-white/10 rounded-2xl bg-[#090b0d] flex flex-col items-center"
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-4xl mt-14 sm:mt-18 pt-10 sm:pt-12 border-t border-white/10 flex flex-col items-center text-center"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
           PRIVATE BETA INVITATION
         </span>
-        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl sm:text-4xl text-white font-normal mb-4">
+        <h3 className="font-[family-name:var(--font-cormorant)] text-2xl sm:text-3xl md:text-4xl text-white font-normal mb-3">
           Begin Your Personal Archive
         </h3>
-        <p className="text-sm text-white/65 font-light max-w-md mb-8 leading-relaxed font-[family-name:var(--font-cormorant)] text-base sm:text-lg">
-          Join the waitlist for iOS TestFlight and Android preview. Experience the quiet luxury notebook engineered for minds that notice.
+        <p className="text-xs sm:text-sm text-white/60 font-light max-w-md mb-6 leading-relaxed font-[family-name:var(--font-cormorant)] text-base sm:text-lg">
+          Join the waitlist for iOS TestFlight and Android preview.
         </p>
 
         <button
           onClick={() => setModalOpen(true)}
-          className="group flex items-center gap-3 px-7 py-3 rounded-xl bg-white text-stone-950 font-medium text-xs font-mono tracking-widest uppercase hover:bg-stone-200 transition-all shadow-xl cursor-pointer"
+          className="group flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white text-stone-950 font-medium text-[11px] font-mono tracking-[0.2em] uppercase hover:bg-stone-200 transition-all cursor-pointer shadow-lg"
         >
           <span>Request Access Token</span>
-          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+          <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
         </button>
       </motion.div>
 
