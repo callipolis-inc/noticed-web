@@ -1,0 +1,206 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Plus } from "lucide-react";
+import { WaitlistModal } from "./WaitlistModal";
+
+export function HeroSection() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [targetPlatform, setTargetPlatform] = useState<"apple" | "google">("apple");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleOpenStore = (platform: "apple" | "google") => {
+    setTargetPlatform(platform);
+    setModalOpen(true);
+  };
+
+  return (
+    <section className="relative min-h-screen w-full bg-[#070b0d] flex flex-col justify-between overflow-hidden p-3 sm:p-5 md:p-6 lg:p-8">
+      {/* Outer rounded exhibition frame (as seen in the design mockup) */}
+      <div className="relative w-full min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2.5rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-4rem)] rounded-[20px] sm:rounded-[28px] md:rounded-[36px] overflow-hidden border border-white/10 flex flex-col justify-between shadow-2xl">
+        
+        {/* Background Artwork Layer (Spotlit Baroque Frame on Slate Museum Wall) */}
+        <div className="absolute inset-0 z-0">
+          <picture>
+            <source srcSet="/heroes-bg.webp" type="image/webp" />
+            <img
+              src="/heroes-page.png"
+              alt="Noticed Baroque Masterpiece on Exhibition Wall"
+              className="w-full h-full object-cover object-center select-none pointer-events-none scale-[1.01] transition-transform duration-1000 ease-out"
+            />
+          </picture>
+
+          {/* Subtle Ambient Vignette & Depth Overlay */}
+          <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#070b0d]/20 to-[#070b0d]/60 pointer-events-none" />
+        </div>
+
+        {/* 1. TOP NAVIGATION BAR */}
+        <motion.header 
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-30 w-full flex items-center justify-between px-6 sm:px-10 md:px-14 lg:px-16 pt-6 sm:pt-8 md:pt-10 select-none"
+        >
+          {/* Left Nav Cluster */}
+          <div className="flex items-center gap-8 sm:gap-12">
+            <a 
+              href="#hero" 
+              className="tracking-[0.22em] text-xs sm:text-sm font-medium text-white/90 hover:text-white transition-colors uppercase font-[family-name:var(--font-syne)]"
+            >
+              Noticed
+            </a>
+            <span className="tracking-[0.2em] text-[11px] sm:text-xs text-white/50 hover:text-white/80 transition-colors uppercase cursor-pointer">
+              Edition 01
+            </span>
+          </div>
+
+          {/* Right Nav Cluster */}
+          <div className="flex items-center gap-6 sm:gap-10">
+            <button
+              onClick={() => handleOpenStore("apple")}
+              className="flex items-center gap-1.5 tracking-[0.2em] text-[11px] sm:text-xs text-white/80 hover:text-white transition-colors uppercase group"
+            >
+              <Plus size={13} className="text-white/70 group-hover:rotate-90 transition-transform duration-300" />
+              <span>Waitlist</span>
+            </button>
+
+            <span className="tracking-[0.2em] text-[11px] sm:text-xs text-white/50 hover:text-white/80 transition-colors uppercase cursor-pointer hidden md:inline-block">
+              Philosophy
+            </span>
+
+            {/* Menu Trigger with 2 horizontal bars */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex items-center gap-2.5 tracking-[0.2em] text-[11px] sm:text-xs text-white/90 hover:text-white transition-colors uppercase group"
+              aria-label="Toggle Navigation Menu"
+            >
+              <span className="hidden sm:inline-block">Menu</span>
+              <div className="flex flex-col gap-1.5 w-5 justify-center py-1">
+                <span className={`block h-[1.5px] w-full bg-white transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
+                <span className={`block h-[1.5px] w-full bg-white transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
+              </div>
+            </button>
+          </div>
+        </motion.header>
+
+        {/* 2. MIDDLE VIEWPORT (Flanking Content around the Centered Baroque Frame) */}
+        <div className="relative z-20 flex-1 w-full grid grid-cols-1 md:grid-cols-12 items-center px-6 sm:px-10 md:px-14 lg:px-16 py-8 md:py-0">
+          
+          {/* Left Column: Curated Exploration Statement */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-4 lg:col-span-3 max-w-[320px] mb-8 md:mb-0"
+          >
+            <p className="text-[11px] sm:text-xs lg:text-[13px] tracking-[0.16em] uppercase text-[#f4efe6]/85 font-light leading-[1.8] select-none">
+              A curated exploration of art, memory, and the stories that continue to shape how we see the world.
+            </p>
+          </motion.div>
+
+          {/* Center Column: Kept visually breathable for the centered oil painting */}
+          <div className="hidden md:block md:col-span-4 lg:col-span-6 pointer-events-none" />
+
+          {/* Right Column: Get Noticed & Store Download CTA Pills */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-4 lg:col-span-3 flex flex-col items-start md:items-start justify-center"
+          >
+            <h2 className="text-xl sm:text-2xl lg:text-[26px] font-normal tracking-tight text-white mb-4 font-[family-name:var(--font-sans)] select-none">
+              Get Noticed
+            </h2>
+
+            <div className="flex items-center gap-3">
+              {/* Apple Apps Store Pill Button */}
+              <button
+                onClick={() => handleOpenStore("apple")}
+                className="glass-pill group px-5 py-2.5 rounded-xl text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg flex items-center gap-2 cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5 fill-current opacity-90 group-hover:opacity-100" viewBox="0 0 170 170">
+                  <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.69-7.85-12-14.44-6.42-9.79-11.4-20.9-14.93-33.34-3.53-12.43-5.3-24.16-5.3-35.19 0-14.45 3.73-26.65 11.2-36.6 7.46-9.95 16.92-15.02 28.37-15.21 4.8 0 10.23 1.25 16.29 3.75 6.06 2.5 10.2 3.8 12.43 3.92 1.7.13 6.09-1.25 13.16-4.13 7.07-2.88 12.89-4.18 17.47-3.9 13.06.77 23.47 5.66 31.25 14.67-11.41 6.89-17 16.32-16.77 28.31.24 9.4 3.9 17.24 10.99 23.53 7.09 6.29 15.52 9.87 25.29 10.75-2.22 6.52-4.99 13.25-8.31 20.19zM119.22 33.02c0-7.73 2.76-14.99 8.29-21.78 5.53-6.79 12.27-10.87 20.21-12.24.23 1.14.35 2.22.35 3.24 0 7.73-2.88 15.15-8.64 22.25-5.76 7.1-12.63 11.16-20.61 12.18-.11-1.2-.17-2.42-.17-3.65z"/>
+                </svg>
+                <span>Apps Store</span>
+              </button>
+
+              {/* Google Play Store Pill Button */}
+              <button
+                onClick={() => handleOpenStore("google")}
+                className="glass-pill group px-5 py-2.5 rounded-xl text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg flex items-center gap-2 cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5 fill-current opacity-90 group-hover:opacity-100" viewBox="0 0 24 24">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a2.38 2.38 0 0 1-.61-.986V2.8a2.378 2.378 0 0 1 .609-.986zm11.242 11.245l2.257 2.258-11.75 6.784 9.493-9.042zm2.257-2.258l-2.257 2.258-9.493-9.042 11.75 6.784zm1.196 1.196l2.96 1.708a1.59 1.59 0 0 1 0 2.768l-2.96 1.708-2.072-2.072 2.072-2.112z"/>
+                </svg>
+                <span>Play Store</span>
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* 3. MONUMENTAL BOTTOM TYPOGRAPHY: "WORK OF ART" */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-20 w-full overflow-hidden select-none pointer-events-none pb-0 pt-4"
+        >
+          <div className="w-full flex justify-center items-end">
+            <h1 className="font-[family-name:var(--font-syne)] text-[13.8vw] leading-[0.80] tracking-[0.02em] font-medium text-[#f4efe6] whitespace-nowrap text-center drop-shadow-2xl">
+              WORK OF ART
+            </h1>
+          </div>
+        </motion.div>
+
+        {/* Dropdown Menu Modal / Drawer */}
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="absolute top-20 right-6 sm:right-12 z-40 w-64 rounded-2xl border border-white/15 bg-[#0e1317]/95 backdrop-blur-2xl p-5 text-white shadow-2xl"
+          >
+            <div className="text-[10px] uppercase tracking-[0.25em] text-white/40 mb-3 font-mono">
+              Directory
+            </div>
+            <ul className="space-y-3 text-xs tracking-wider uppercase font-light">
+              <li>
+                <a href="#hero" onClick={() => setMenuOpen(false)} className="block py-1 hover:text-amber-200 transition-colors">
+                  01. The Exhibition
+                </a>
+              </li>
+              <li>
+                <a href="#darkroom" onClick={() => setMenuOpen(false)} className="block py-1 text-white/70 hover:text-amber-200 transition-colors">
+                  02. Analog Darkroom
+                </a>
+              </li>
+              <li>
+                <a href="#folio" onClick={() => setMenuOpen(false)} className="block py-1 text-white/70 hover:text-amber-200 transition-colors">
+                  03. Luxury Folio
+                </a>
+              </li>
+              <li>
+                <a href="#manifesto" onClick={() => setMenuOpen(false)} className="block py-1 text-white/70 hover:text-amber-200 transition-colors">
+                  04. Literary Manifesto
+                </a>
+              </li>
+            </ul>
+            <div className="mt-5 pt-4 border-t border-white/10 flex justify-between items-center text-[11px] text-white/50">
+              <span>Noticed v1.0</span>
+              <button onClick={() => { setMenuOpen(false); handleOpenStore("apple"); }} className="text-white hover:underline">
+                Waitlist &rarr;
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </div>
+
+      {/* TestFlight & App Store Waitlist Invitation Modal */}
+      <WaitlistModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        defaultStore={targetPlatform}
+      />
+    </section>
+  );
+}
