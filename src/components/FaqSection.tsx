@@ -49,71 +49,76 @@ export function FaqSection() {
   return (
     <section className="relative w-full bg-[#050708] text-white py-24 sm:py-36 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
       
-      {/* 1. SECTION HEADER */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.9 }}
-        className="max-w-2xl text-center mb-16 sm:mb-20 px-4"
-      >
-        <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-white/40 block mb-4">
-          Inquiries &bull; The Noticed Archive
-        </span>
-        <h2 className="font-[family-name:var(--font-cormorant)] text-3xl sm:text-4xl md:text-5xl font-normal leading-[1.25] text-white tracking-wide mb-4">
-          Frequently Answered Inquiries
-        </h2>
-        <p className="font-[family-name:var(--font-cormorant)] text-base sm:text-lg text-white/60 font-light italic">
-          Reflections on architecture, privacy, and permanence.
-        </p>
-      </motion.div>
+      {/* 1. TWO-COLUMN FAQ CONTAINER */}
+      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        
+        {/* LEFT COLUMN: Section Title & Narrative */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9 }}
+          className="lg:col-span-5 lg:sticky lg:top-24 space-y-4"
+        >
+          <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-white/40 block">
+            Inquiries &bull; The Noticed Archive
+          </span>
+          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl sm:text-4xl md:text-5xl font-normal leading-[1.2] text-white tracking-wide">
+            Frequently Answered Inquiries
+          </h2>
+          <p className="font-[family-name:var(--font-cormorant)] text-base sm:text-lg text-white/60 font-light italic leading-relaxed">
+            Reflections on architecture, privacy, physical permanence, and the art of solitude.
+          </p>
+        </motion.div>
 
-      {/* 2. SLENDER ACCORDION CONTAINER (NO GLASS, RAW HAIRLINE RULES) */}
-      <div className="w-full max-w-3xl divide-y divide-white/10 border-y border-white/10">
-        {FAQS.map((faq, index) => {
-          const isOpen = openIndex === index;
+        {/* RIGHT COLUMN: Slender Accordion List */}
+        <div className="lg:col-span-7 w-full divide-y divide-white/10 border-y border-white/10">
+          {FAQS.map((faq, index) => {
+            const isOpen = openIndex === index;
 
-          return (
-            <div key={index} className="py-5 sm:py-7">
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full flex items-center justify-between text-left group cursor-pointer gap-6"
-                aria-expanded={isOpen}
-              >
-                <span className="font-[family-name:var(--font-cormorant)] text-xl sm:text-2xl text-white/90 group-hover:text-white transition-colors tracking-wide font-normal">
-                  {faq.question}
-                </span>
-                <span className="shrink-0 p-1 rounded-full text-white/40 group-hover:text-white transition-colors">
-                  <Plus
-                    size={16}
-                    className={`transition-transform duration-300 ${
-                      isOpen ? "rotate-45 text-white" : ""
-                    }`}
-                  />
-                </span>
-              </button>
+            return (
+              <div key={index} className="py-5 sm:py-6">
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer gap-6"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-[family-name:var(--font-cormorant)] text-xl sm:text-2xl text-white/90 group-hover:text-white transition-colors tracking-wide font-normal">
+                    {faq.question}
+                  </span>
+                  <span className="shrink-0 p-1 rounded-full text-white/40 group-hover:text-white transition-colors">
+                    <Plus
+                      size={16}
+                      className={`transition-transform duration-300 ${
+                        isOpen ? "rotate-45 text-white" : ""
+                      }`}
+                    />
+                  </span>
+                </button>
 
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pt-4 text-sm sm:text-[15px] leading-[1.75] text-white/65 font-light font-[family-name:var(--font-cormorant)]">
-                      {faq.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          );
-        })}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pt-3 text-sm sm:text-[15px] leading-[1.75] text-white/65 font-light font-[family-name:var(--font-cormorant)]">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
 
-      {/* 3. SLENDER RESERVATION BANNER */}
+      {/* 2. SLENDER RESERVATION BANNER */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -140,7 +145,7 @@ export function FaqSection() {
         </button>
       </motion.div>
 
-      {/* 4. MINIMALIST ARCHIVAL FOOTER */}
+      {/* 3. MINIMALIST ARCHIVAL FOOTER */}
       <footer className="w-full max-w-5xl mt-24 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-white/40 tracking-wider">
         <span>NOTICED &bull; VOL. I &bull; MCMXXVI</span>
         <span className="mt-2 sm:mt-0 font-[family-name:var(--font-cormorant)] text-sm text-white/60 italic">
