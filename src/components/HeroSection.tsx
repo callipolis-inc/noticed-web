@@ -16,9 +16,15 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen w-full bg-[#070b0d] flex flex-col justify-between overflow-hidden">
-      {/* 1. Full-bleed Background: Baroque Framed Artwork on Spotlit Museum Slate Wall */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative min-h-screen w-full bg-[#050708] flex flex-col justify-between overflow-hidden">
+      {/* 1. Full-bleed Background with seamless mask-fade to pure black */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          maskImage: "linear-gradient(to bottom, black 0%, black 62%, transparent 96%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 62%, transparent 96%)",
+        }}
+      >
         <picture>
           <source srcSet="/heroes-bg.webp" type="image/webp" />
           <img
@@ -27,9 +33,6 @@ export function HeroSection() {
             className="w-full h-full object-cover object-center select-none pointer-events-none scale-[1.01]"
           />
         </picture>
-
-        {/* Subtle Ambient Vignette Overlay */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#070b0d]/20 to-[#070b0d]/60 pointer-events-none" />
       </div>
 
       {/* 2. TOP NAVIGATION BAR */}
@@ -150,8 +153,6 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Seamless transition veil into subsequent sections */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#070b0d]/60 to-[#070b0d] pointer-events-none z-10" />
 
       {/* Dropdown Menu Modal */}
       {menuOpen && (
