@@ -3,11 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { WaitlistModal } from "./WaitlistModal";
 
 export function DarkroomSection() {
-  const [modalOpen, setModalOpen] = useState(false);
   const [activeEmulsion, setActiveEmulsion] = useState<"tri-x" | "cinestill" | "portra">("tri-x");
 
   return (
@@ -175,49 +172,6 @@ export function DarkroomSection() {
         </div>
 
       </div>
-
-      {/* 4. SLENDER CTA & RESERVATION BANNER */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9 }}
-        className="w-full max-w-3xl mt-24 sm:mt-32 text-center p-8 sm:p-12 border border-white/10 rounded-2xl bg-[#090b0d] flex flex-col items-center"
-      >
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
-          PRIVATE BETA INVITATION
-        </span>
-        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl sm:text-4xl text-white font-normal mb-4">
-          Begin Your Personal Archive
-        </h3>
-        <p className="text-sm text-white/65 font-light max-w-md mb-8 leading-relaxed">
-          Join the waitlist for iOS TestFlight and Android preview. Experience the quiet luxury notebook engineered for minds that notice.
-        </p>
-
-        <button
-          onClick={() => setModalOpen(true)}
-          className="group flex items-center gap-3 px-7 py-3 rounded-xl bg-white text-stone-950 font-medium text-xs font-mono tracking-widest uppercase hover:bg-stone-200 transition-all shadow-xl cursor-pointer"
-        >
-          <span>Request Access Token</span>
-          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-        </button>
-      </motion.div>
-
-      {/* 5. MINIMALIST ARCHIVAL FOOTER */}
-      <footer className="w-full max-w-5xl mt-24 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-white/40 tracking-wider">
-        <span>NOTICED &bull; VOL. I &bull; MCMXXVI</span>
-        <span className="mt-2 sm:mt-0 font-[family-name:var(--font-cormorant)] text-sm text-white/60 italic">
-          &ldquo;for things you don&apos;t want to forget&rdquo;
-        </span>
-        <span className="mt-2 sm:mt-0">ALL RIGHTS RESERVED</span>
-      </footer>
-
-      {/* Waitlist Modal */}
-      <WaitlistModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        defaultStore="apple"
-      />
 
     </section>
   );

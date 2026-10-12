@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/HeroSection";
 import { BookUnfoldSection } from "@/components/BookUnfoldSection";
 import { DarkroomSection } from "@/components/DarkroomSection";
+import { FaqSection } from "@/components/FaqSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <BookUnfoldSection />
       <DarkroomSection />
+      <FaqSection />
     </main>
   );
 }
