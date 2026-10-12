@@ -85,10 +85,10 @@ export function FooterSection() {
             </a>
 
             <a
-              href="#darkroom"
+              href="#library"
               className="text-white/70 hover:text-white transition-colors duration-200"
             >
-              DARKROOM
+              THE LIBRARY
             </a>
 
             <a
