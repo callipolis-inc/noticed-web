@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, ArrowRight } from "lucide-react";
+import { Plus, ArrowUpRight } from "lucide-react";
 import { WaitlistModal } from "./WaitlistModal";
 
 interface FaqItem {
@@ -41,6 +41,14 @@ const FAQS: FaqItem[] = [
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!emailInput) return;
+    setSubmitted(true);
+  };
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -118,31 +126,52 @@ export function FaqSection() {
 
       </div>
 
-      {/* 2. MINIMALIST RESERVATION BAND (NO CARD, HAIRLINE LINE DIVIDER, LEAN MARGINS) */}
+      {/* 2. MINIMALIST EDITORIAL INVITATION (EXACTLY MATCHING USER REFERENCE IMAGE) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-4xl mt-14 sm:mt-18 pt-10 sm:pt-12 border-t border-white/10 flex flex-col items-center text-center"
+        className="w-full max-w-5xl mt-16 sm:mt-20 pt-12 sm:pt-14 border-t border-white/10 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 sm:gap-12"
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
-          PRIVATE BETA INVITATION
-        </span>
-        <h3 className="font-[family-name:var(--font-cormorant)] text-2xl sm:text-3xl md:text-4xl text-white font-normal mb-3">
-          Begin Your Personal Archive
-        </h3>
-        <p className="text-xs sm:text-sm text-white/60 font-light max-w-md mb-6 leading-relaxed font-[family-name:var(--font-cormorant)] text-base sm:text-lg">
-          Join the waitlist for iOS TestFlight and Android preview.
-        </p>
+        {/* Left: Editorial Statement */}
+        <div className="space-y-2">
+          <h3 className="font-[family-name:var(--font-cormorant)] text-3xl sm:text-4xl lg:text-[40px] font-normal text-white tracking-wide leading-none">
+            A letter, once a season.
+          </h3>
+          <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-white/40">
+            Quiet notes from the studio. No noise.
+          </p>
+        </div>
 
-        <button
-          onClick={() => setModalOpen(true)}
-          className="group flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white text-stone-950 font-medium text-[11px] font-mono tracking-[0.2em] uppercase hover:bg-stone-200 transition-all cursor-pointer shadow-lg"
-        >
-          <span>Request Access Token</span>
-          <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-        </button>
+        {/* Right: Underlined Email Subscription Field */}
+        <div className="w-full md:w-auto md:min-w-[380px] lg:min-w-[420px]">
+          {submitted ? (
+            <div className="flex items-center gap-2 border-b border-white/30 pb-2.5 text-white/90 font-mono text-xs tracking-wider">
+              <span>Token reserved. Welcome to the archive.</span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="w-full">
+              <div className="flex items-center justify-between border-b border-white/20 pb-2.5 focus-within:border-white transition-colors">
+                <input
+                  type="email"
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  className="w-full bg-transparent text-sm sm:text-base font-[family-name:var(--font-cormorant)] italic text-white placeholder:text-white/35 placeholder:font-[family-name:var(--font-cormorant)] focus:outline-none pr-4"
+                />
+                <button
+                  type="submit"
+                  className="shrink-0 flex items-center gap-1 font-mono text-xs sm:text-[13px] tracking-wider text-white/80 hover:text-white transition-colors cursor-pointer whitespace-nowrap pl-2 group"
+                >
+                  <span>Subscribe</span>
+                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
       </motion.div>
 
 
