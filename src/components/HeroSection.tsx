@@ -16,7 +16,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen w-full bg-[#050708] flex flex-col justify-between overflow-hidden">
+    <section id="hero" className="relative min-h-screen w-full bg-[#050708] flex flex-col justify-between overflow-hidden">
       {/* 1. Full-bleed Background with seamless mask-fade to pure black */}
       <div 
         className="absolute inset-0 z-0"

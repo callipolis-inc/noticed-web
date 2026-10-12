@@ -44,6 +44,7 @@ export function BookUnfoldSection() {
 
   return (
     <section 
+      id="manuscript"
       ref={sectionRef}
       className="relative w-full bg-[#050708] text-white py-24 sm:py-32 lg:py-44 px-4 sm:px-6 md:px-10 flex flex-col items-center justify-center overflow-hidden select-none"
     >

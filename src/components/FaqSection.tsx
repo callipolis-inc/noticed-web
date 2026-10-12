@@ -47,7 +47,7 @@ export function FaqSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#050708] text-white py-24 sm:py-36 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
+    <section id="faq" className="relative w-full bg-[#050708] text-white py-24 sm:py-36 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
       
       {/* 1. TWO-COLUMN FAQ CONTAINER */}
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -145,14 +145,6 @@ export function FaqSection() {
         </button>
       </motion.div>
 
-      {/* 3. MINIMALIST ARCHIVAL FOOTER */}
-      <footer className="w-full max-w-5xl mt-24 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-white/40 tracking-wider">
-        <span>NOTICED &bull; VOL. I &bull; MCMXXVI</span>
-        <span className="mt-2 sm:mt-0 font-[family-name:var(--font-cormorant)] text-sm text-white/60 italic">
-          &ldquo;for things you don&apos;t want to forget&rdquo;
-        </span>
-        <span className="mt-2 sm:mt-0">ALL RIGHTS RESERVED</span>
-      </footer>
 
       {/* Waitlist Modal */}
       <WaitlistModal

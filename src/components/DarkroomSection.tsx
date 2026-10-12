@@ -8,7 +8,7 @@ export function DarkroomSection() {
   const [activeEmulsion, setActiveEmulsion] = useState<"tri-x" | "cinestill" | "portra">("tri-x");
 
   return (
-    <section className="relative w-full bg-[#050708] text-white py-24 sm:py-36 lg:py-44 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
+    <section id="darkroom" className="relative w-full bg-[#050708] text-white py-24 sm:py-36 lg:py-44 px-4 sm:px-8 md:px-14 flex flex-col items-center justify-center overflow-hidden select-none">
       
       {/* 1. SLENDER CURATORIAL INTRO */}
       <motion.div

@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { BookUnfoldSection } from "@/components/BookUnfoldSection";
 import { DarkroomSection } from "@/components/DarkroomSection";
 import { FaqSection } from "@/components/FaqSection";
+import { FooterSection } from "@/components/FooterSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <BookUnfoldSection />
       <DarkroomSection />
       <FaqSection />
+      <FooterSection />
     </main>
   );
 }
