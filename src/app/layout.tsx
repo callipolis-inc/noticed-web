@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne, Cormorant_Garamond } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,22 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Noticed — Work of Art. A Curated Digital Notebook",
+  title: "Noticed — for things you don't want to forget",
   description:
-    "A curated exploration of art, memory, and the stories that continue to shape how we see the world. Available on iOS and Android.",
+    "A quiet, offline-first personal & shared field notebook with Penguin Classics editorial typography and luxury digital archives. Available on iOS and Android.",
 };
 
 export default function RootLayout({
@@ -38,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${cormorant.variable} antialiased bg-[#070b0d] text-stone-100 selection:bg-amber-900/40 selection:text-amber-100`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} antialiased bg-[#070b0d] text-white selection:bg-amber-900/40 selection:text-amber-100`}
       >
         {children}
       </body>

@@ -3,31 +3,30 @@
 @theme inline {
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
-  --font-syne: var(--font-syne), sans-serif;
   --font-serif: var(--font-cormorant), Georgia, serif;
 }
 
 :root {
   --background: #070b0d;
-  --foreground: #f4efe6;
+  --foreground: #ffffff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   overflow-x: hidden;
 }
 
-/* Custom subtle glassmorphism utilities */
+/* Luxury translucent pill button */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 .glass-pill:hover {
-  background: rgba(255, 255, 255, 0.13);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.38);
 }

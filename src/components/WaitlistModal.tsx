@@ -89,13 +89,13 @@ export function WaitlistModal({
             ) : (
               <div>
                 <div className="mb-6">
-                  <p className="text-[10px] tracking-[0.25em] uppercase text-amber-300/80 font-mono mb-1.5">
+                  <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-mono mb-1.5">
                     Private Beta Edition
                   </p>
-                  <h3 className="font-[family-name:var(--font-syne)] text-2xl font-light tracking-wide text-white">
-                    Get Noticed
+                  <h3 className="font-[family-name:var(--font-cormorant)] text-3xl font-normal tracking-wide text-white">
+                    Begin Your Archive
                   </h3>
-                  <p className="mt-2 text-xs text-white/70 leading-relaxed font-light">
+                  <p className="mt-2 text-xs sm:text-sm text-white/80 leading-relaxed font-light font-[family-name:var(--font-cormorant)]">
                     Join the private literary circle. Experience the analog darkroom, luxury folio manuscripts, and calm digital journaling before public release.
                   </p>
                 </div>
