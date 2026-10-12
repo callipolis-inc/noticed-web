@@ -150,6 +150,9 @@ export function HeroSection() {
         </div>
       </motion.div>
 
+      {/* Seamless transition veil into subsequent sections */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#070b0d]/60 to-[#070b0d] pointer-events-none z-10" />
+
       {/* Dropdown Menu Modal */}
       {menuOpen && (
         <motion.div
