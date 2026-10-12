@@ -12,144 +12,116 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="relative w-full min-h-[75vh] sm:min-h-[85vh] bg-[#050708] flex items-center justify-center overflow-hidden select-none">
-      
-      {/* 1. SEAMLESS TRANSITION FROM FAQ (ZERO SEAMS, PURE OBSIDIAN AT EDGES) */}
+    <footer className="relative w-full bg-[#050708] min-h-[70vh] sm:min-h-[85vh] py-32 sm:py-44 lg:py-56 overflow-hidden select-none flex items-center justify-center">
+      {/* 1. SEAMLESS TOP AMBIENT FADE (GUARANTEES 100% PURE OBSIDIAN AT JUNCTION WITH FAQ) */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 90% 70% at 50% 50%, #171a1e 0%, #0d0f12 52%, #050708 100%)",
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
         }}
-      />
-
-      {/* Luminous frosted ambient core glow (inspired by Trelli reference) */}
-      <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-5xl h-[360px] sm:h-[440px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 55% at 50% 50%, rgba(255, 255, 255, 0.28) 0%, rgba(200, 210, 220, 0.10) 45%, transparent 75%)",
-          filter: "blur(40px)",
-        }}
-      />
-
-      {/* 2. ANALOG FILM GRAIN / TACTILE NOISE OVERLAY */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.38] mix-blend-overlay z-20">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <filter id="footer-grain-filter">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.8"
-              numOctaves="4"
-              stitchTiles="stitch"
-            />
-            <feColorMatrix
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.9 0"
-            />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#footer-grain-filter)" />
-        </svg>
-      </div>
-
-      {/* 3. MONUMENTAL FROSTED & VOLUMETRIC BLUR "NOTICED" (TRELLI STYLE) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4">
-        {/* Layer A: Vertical Volumetric Light Streaks (cascading down like stems in Trelli) */}
-        <span
-          aria-hidden="true"
-          className="absolute font-[family-name:var(--font-cormorant)] text-[18vw] sm:text-[19.5vw] font-bold tracking-[0.22em] uppercase select-none text-white/45 scale-y-[1.38] translate-y-8 sm:translate-y-12 pl-[0.22em]"
-          style={{ filter: "blur(32px)" }}
-        >
-          NOTICED
-        </span>
-
-        {/* Layer B: Frosted Body Bloom */}
-        <span
-          aria-hidden="true"
-          className="absolute font-[family-name:var(--font-cormorant)] text-[18vw] sm:text-[19.5vw] font-bold tracking-[0.22em] uppercase select-none text-white/65 pl-[0.22em]"
-          style={{ filter: "blur(14px)" }}
-        >
-          NOTICED
-        </span>
-
-        {/* Layer C: Crisp Frosted Top Edge Highlight */}
-        <span
-          aria-hidden="true"
-          className="absolute font-[family-name:var(--font-cormorant)] text-[18vw] sm:text-[19.5vw] font-bold tracking-[0.22em] uppercase select-none text-white/90 pl-[0.22em]"
-          style={{
-            filter: "blur(2px)",
-            maskImage: "linear-gradient(to bottom, white 0%, white 35%, transparent 70%)",
-            WebkitMaskImage: "linear-gradient(to bottom, white 0%, white 35%, transparent 70%)",
-          }}
-        >
-          NOTICED
-        </span>
-      </div>
-
-      {/* 4. CENTERED SINGLE ROW OF FOOTER TEXT (PURE TEXT, NO LOGOS, NO ICONS, NO BULLETS) */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-30 w-full max-w-5xl px-6 sm:px-8 py-8 flex flex-col items-center justify-center text-center"
       >
-        <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-9 md:gap-x-11 gap-y-3 font-mono text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.24em] text-white/75">
-          <span className="text-white/60 hover:text-white transition-colors">
-            © 2026 NOTICED
-          </span>
+        {/* Soft radial spotlight centered directly behind the monumental text */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-5xl h-[380px]"
+          style={{
+            background:
+              "radial-gradient(ellipse 65% 50% at 50% 50%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 48%, transparent 75%)",
+            filter: "blur(40px)",
+          }}
+        />
 
-          <a
-            href="#manuscript"
-            className="text-white/60 hover:text-white transition-colors duration-200"
-          >
-            PHILOSOPHY
-          </a>
-
-          <a
-            href="#manuscript"
-            className="text-white/60 hover:text-white transition-colors duration-200"
-          >
-            THE MANUSCRIPT
-          </a>
-
-          <a
-            href="#darkroom"
-            className="text-white/60 hover:text-white transition-colors duration-200"
-          >
-            DARKROOM
-          </a>
-
-          <a
-            href="#faq"
-            className="text-white/60 hover:text-white transition-colors duration-200"
-          >
-            OFFLINE PRIVACY
-          </a>
-
-          <a
-            href="#faq"
-            className="text-white/60 hover:text-white transition-colors duration-200"
-          >
-            TERMS
-          </a>
-
-          <button
-            onClick={() => setModalOpen(true)}
-            className="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
-          >
-            TESTFLIGHT BETA
-          </button>
-
-          <button
-            onClick={scrollToTop}
-            className="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
-          >
-            BACK TO TOP
-          </button>
+        {/* Soft volumetric light columns cascading vertically through the letterforms */}
+        <div className="absolute inset-0 opacity-20 mix-blend-screen flex justify-around px-8 sm:px-20">
+          <div className="w-12 h-full bg-gradient-to-b from-transparent via-white/12 to-transparent blur-xl" />
+          <div className="w-20 h-full bg-gradient-to-b from-transparent via-white/18 to-transparent blur-2xl" />
+          <div className="w-10 h-full bg-gradient-to-b from-transparent via-white/10 to-transparent blur-xl" />
+          <div className="w-24 h-full bg-gradient-to-b from-transparent via-white/16 to-transparent blur-2xl" />
+          <div className="w-12 h-full bg-gradient-to-b from-transparent via-white/12 to-transparent blur-xl" />
         </div>
-      </motion.div>
+      </div>
+
+      {/* 2. CENTER STAGE: MONUMENTAL "NOTICED" WITH CENTERED OVERLAY TEXT */}
+      <div className="relative z-10 w-full flex items-center justify-center px-4 sm:px-8">
+        
+        {/* Large Monumental Serif Background Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full flex items-center justify-center"
+        >
+          <h2 className="font-[family-name:var(--font-cormorant)] text-[16vw] sm:text-[18vw] lg:text-[19.5vw] leading-none tracking-[0.24em] font-light uppercase select-none text-center bg-gradient-to-b from-white/35 via-white/12 to-white/[0.02] bg-clip-text text-transparent pl-[0.24em] drop-shadow-[0_12px_45px_rgba(255,255,255,0.05)]">
+            NOTICED
+          </h2>
+        </motion.div>
+
+        {/* 3. SINGLE LINE FOOTER TEXT FLOATING DIRECTLY IN THE CENTER */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="absolute inset-0 flex items-center justify-center px-4"
+        >
+          <div className="flex flex-wrap items-center justify-center gap-y-3 gap-x-5 sm:gap-x-7 md:gap-x-9 text-[10px] sm:text-[11px] md:text-xs font-mono uppercase tracking-[0.24em] text-white/70 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+            <span className="text-white/45">
+              © 2026 NOTICED
+            </span>
+
+            <a
+              href="#manuscript"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              PHILOSOPHY
+            </a>
+
+            <a
+              href="#manuscript"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              THE MANUSCRIPT
+            </a>
+
+            <a
+              href="#darkroom"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              DARKROOM
+            </a>
+
+            <a
+              href="#faq"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              OFFLINE PRIVACY
+            </a>
+
+            <a
+              href="#faq"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              TERMS
+            </a>
+
+            <button
+              onClick={() => setModalOpen(true)}
+              className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              TESTFLIGHT BETA
+            </button>
+
+            <button
+              onClick={scrollToTop}
+              className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              BACK TO TOP
+            </button>
+          </div>
+        </motion.div>
+
+      </div>
 
       {/* TestFlight Access Modal */}
       <WaitlistModal
