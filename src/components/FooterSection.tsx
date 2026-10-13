@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { WaitlistModal } from "./WaitlistModal";
 
@@ -91,19 +92,19 @@ export function FooterSection() {
               THE LIBRARY
             </a>
 
-            <a
-              href="#faq"
+            <Link
+              href="/privacy"
               className="text-white/70 hover:text-white transition-colors duration-200"
             >
               OFFLINE PRIVACY
-            </a>
+            </Link>
 
-            <a
-              href="#faq"
+            <Link
+              href="/terms"
               className="text-white/70 hover:text-white transition-colors duration-200"
             >
               TERMS
-            </a>
+            </Link>
 
             <button
               onClick={() => setModalOpen(true)}
