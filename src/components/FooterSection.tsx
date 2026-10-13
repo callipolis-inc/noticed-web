@@ -106,6 +106,13 @@ export function FooterSection() {
               TERMS
             </Link>
 
+            <a
+              href="/account-deletion.html"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              ACCOUNT DELETION
+            </a>
+
             <button
               onClick={() => setModalOpen(true)}
               className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer"

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Noticed: Private Field Notes</title>
+  <style>
+    :root {
+      --bg: #FBF9F5;
+      --card: #FFFFFF;
+      --text: #1C1917;
+      --muted: #57534E;
+      --border: #E7E2D8;
+      --accent: #D95D39;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121214;
+        --card: #1A1A1E;
+        --text: #F5F5F4;
+        --muted: #A8A29E;
+        --border: #2C2C32;
+      }
+    }
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px 36px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    }
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      margin: 0 0 8px 0;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand">Noticed &bull; Callipolis Inc.</div>
+    <h1>Privacy Policy</h1>
+    <div class="meta">Effective Date: October 13, 2026 &bull; Sovereign Offline-First Architecture</div>
+
+    <p>
+      <strong>Noticed: Private Field Notes</strong> (&ldquo;Noticed&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is built on a core principle: your personal thoughts, journals, and marginalia belong exclusively to you.
+    </p>
+
+    <h2>1. Local-First & Offline by Default</h2>
+    <p>
+      By default, all notebooks, field notes, photos, and voice memos created in Noticed are stored locally on your device using encrypted browser/native storage (IndexedDB &amp; local storage). You can use Noticed indefinitely without ever creating an account or transmitting data to our servers.
+    </p>
+
+    <h2>2. Optional Cloud Synchronization</h2>
+    <p>
+      If you choose to sign up for a Noticed Cloud account, we collect only the minimum information required to synchronize your data across your devices:
+    </p>
+    <ul>
+      <li><strong>Email Address:</strong> Used strictly for account authentication, password recovery, and security notifications.</li>
+      <li><strong>Synchronized Notebooks &amp; Notes:</strong> Stored securely in our cloud database (powered by Supabase with Row-Level Security) so only your authenticated session can read or modify your records.</li>
+    </ul>
+
+    <h2>3. Zero Tracking &amp; Zero Third-Party Advertising</h2>
+    <p>
+      We do not use third-party advertising SDKs, behavioral tracking pixels, or data brokers. We never sell, rent, or monetize your personal notes or metadata.
+    </p>
+
+    <h2>4. Device Permissions</h2>
+    <ul>
+      <li><strong>Camera &amp; Photo Library:</strong> Requested only when you explicitly attach a polaroid photo to a field note.</li>
+      <li><strong>Microphone:</strong> Requested only when you record an audio voice memo inside a note.</li>
+    </ul>
+
+    <h2 id="data-deletion">5. Account &amp; Data Deletion</h2>
+    <p>
+      You have complete control over your data at all times:
+    </p>
+    <ul>
+      <li><strong>In-App Instant Deletion:</strong> Open Noticed &rarr; tap your <em>Profile</em> icon &rarr; scroll to <em>Account &amp; Data Privacy</em> &rarr; tap <strong>Delete Account &amp; Data</strong>. This permanently purges your cloud profile, all synchronized notebooks, notes, and local caches immediately.</li>
+      <li><strong>Web Deletion Portal:</strong> You may also review instructions or submit a deletion request via our <a href="/account-deletion.html">Account Deletion Portal</a>.</li>
+    </ul>
+
+    <h2>6. Contact Us</h2>
+    <p>
+      For privacy inquiries or support requests, contact us at <a href="mailto:privacy@noticed.app">privacy@noticed.app</a>.
+    </p>
+
+    <div class="footer">
+      <span>&copy; 2026 Callipolis Inc. All rights reserved.</span>
+      <span>
+        <a href="/">Home</a> &bull;
+        <a href="/account-deletion.html">Account Deletion</a>
+      </span>
+    </div>
+  </div>
+</body>
+</html>
