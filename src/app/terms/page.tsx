@@ -156,7 +156,7 @@ export default function TermsPage() {
           </h2>
           <div className="text-xs sm:text-sm font-mono text-white/75 space-y-1 pt-1">
             <div>Callipolis Inc. · Legal Counsel</div>
-            <div>Inquiries: <a href="mailto:support@callipolis.co" className="text-white underline decoration-white/30 hover:decoration-white">support@callipolis.co</a></div>
+            <div>Inquiries: <a href="mailto:sidenotes.inc@gmail.com?subject=[Noticed%20Legal]%20Inquiry" className="text-white underline decoration-white/30 hover:decoration-white">sidenotes.inc@gmail.com</a></div>
             <div>Website: <a href="https://noticed.app" className="text-white underline decoration-white/30 hover:decoration-white">noticed.app</a></div>
           </div>
         </section>

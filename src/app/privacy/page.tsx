@@ -183,7 +183,7 @@ export default function PrivacyPage() {
               If you have uninstalled the application or cannot access your device, you may submit a remote account erasure request:
             </p>
             <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-white/70 pl-1 font-light">
-              <li>Send an email to <a href="mailto:support@callipolis.co?subject=Account%20Deletion%20Request" className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">support@callipolis.co</a> with the subject <code className="text-white/90 bg-white/10 px-1.5 py-0.5 rounded text-[11px]">Account Deletion Request</code>.</li>
+              <li>Send an email to <a href="mailto:sidenotes.inc@gmail.com?subject=Account%20Deletion%20Request" className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">sidenotes.inc@gmail.com</a> with the subject <code className="text-white/90 bg-white/10 px-1.5 py-0.5 rounded text-[11px]">Account Deletion Request</code>.</li>
               <li>The email must be sent from your registered account email address for verification.</li>
               <li>Our automated compliance engine will verify and purge all cloud database rows, storage attachments, and auth credentials within 7 business days.</li>
             </ul>
@@ -224,7 +224,7 @@ export default function PrivacyPage() {
           </p>
           <div className="text-xs sm:text-sm font-mono text-white/75 space-y-1 pt-2">
             <div>Callipolis Inc. · Publisher of Noticed</div>
-            <div>Inquiries: <a href="mailto:support@callipolis.co" className="text-white underline decoration-white/30 hover:decoration-white">support@callipolis.co</a></div>
+            <div>Inquiries: <a href="mailto:sidenotes.inc@gmail.com?subject=[Noticed%20Privacy]%20Inquiry" className="text-white underline decoration-white/30 hover:decoration-white">sidenotes.inc@gmail.com</a></div>
             <div>Website: <a href="https://noticed.app" className="text-white underline decoration-white/30 hover:decoration-white">noticed.app</a></div>
           </div>
         </section>
