@@ -87,7 +87,7 @@ export default function TermsPage() {
             </p>
             <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-white/70 font-light pl-2">
               <li>Storing and indexing your records locally on your device.</li>
-              <li>Transmitting and encrypting cloud backups across authorized devices when you activate Cloud Sync.</li>
+              <li>Transmitting and storing notebook data through HTTPS across authorized devices and notebooks you share when Cloud Sync is active. This service does not provide end-to-end encryption.</li>
             </ul>
             <p className="text-sm sm:text-base text-white/85 pt-1">
               We <strong className="text-white">never</strong> claim copyright over your writing, we <strong className="text-white">never</strong> sell your content, and we <strong className="text-white">never</strong> train public AI models on your private notebooks.
@@ -102,7 +102,7 @@ export default function TermsPage() {
           </h2>
           <div className="space-y-3 text-sm sm:text-base text-white/75 font-light leading-relaxed">
             <p>
-              <strong className="text-white font-medium">Free Tier</strong>: Core offline-first field notes, standard typography, on-device encryption, and basic media curation are available to all users.
+              <strong className="text-white font-medium">Free Tier</strong>: Core offline-first field notes, standard typography, local storage, and basic media curation are available to all users.
             </p>
             <p>
               <strong className="text-white font-medium">Atelier Pro</strong>: We offer an optional patron tier providing expanded capabilities, such as unlimited gallery photos per note, audio memo import &amp; archival trimming, video documentation, and luxury bespoke notebook folios.
