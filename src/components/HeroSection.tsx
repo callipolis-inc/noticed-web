@@ -248,7 +248,7 @@ export function HeroSection() {
 
             {/* Bottom Bar: Access CTA & Copyright */}
             <div className="w-full pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/40">
-              <span>© 2026 NOTICED ARCHIVES &bull; ENCRYPTED LOCAL MEMORY</span>
+              <span>© 2026 NOTICED ARCHIVES &bull; OFFLINE-FIRST NOTES</span>
               <button
                 onClick={() => {
                   setMenuOpen(false);

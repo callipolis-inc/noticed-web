@@ -321,13 +321,13 @@ export function BookshelfSection() {
 
           <div className="space-y-1.5">
             <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-white/40 block">
-              03 &bull; Encrypted Solitude
+              03 &bull; Private Notebooks
             </span>
             <h4 className="font-[family-name:var(--font-cormorant)] text-lg text-white font-normal">
-              Zero Cloud Training
+              Offline at the Core
             </h4>
             <p className="text-xs sm:text-sm text-white/60 font-light leading-relaxed font-[family-name:var(--font-cormorant)]">
-              Stored offline on your device. No telemetry, no behavioral profiling, and zero AI scraping.
+              Write offline without an account. Optional account features use cloud services for synchronization and purchases; see our Privacy Policy for details.
             </p>
           </div>
 
